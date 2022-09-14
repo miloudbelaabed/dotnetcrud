@@ -42,7 +42,8 @@ namespace RecipesApi
       services.Configure<AppSettings>(appSettingsSection);
 
       // configure jwt authentification
-
+      
+      
       var appSettings = appSettingsSection.Get<AppSettings>();
       var key = Encoding.ASCII.GetBytes(appSettings.Secret);
       services.AddAuthentication(x =>
