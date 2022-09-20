@@ -94,6 +94,7 @@ namespace RecipeApp.Controllers
     public IActionResult GetAll()
     {
       var users = _userService.GetAll();
+
       var model = _mapper.Map<IList<UserModel>>(users);
       return Ok(model);
     }
