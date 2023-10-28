@@ -20,7 +20,7 @@ WORKDIR "/src/"
 RUN dotnet build "RecipesApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Recipes.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "RecipesApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 EXPOSE 587
