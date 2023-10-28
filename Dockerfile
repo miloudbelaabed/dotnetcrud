@@ -7,20 +7,20 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["FNPOSInscription.WebApi/FNPOSInscription.WebApi.csproj", "FNPOSInscription.WebApi/"]
+COPY ["RecipesApi.csproj", "RecipesApi/"]
 COPY [".", "."]
 #COPY . /src/
-RUN dotnet restore "FNPOSInscription.WebApi/FNPOSInscription.WebApi.csproj"
+RUN dotnet restore "RecipesApi.csproj"
 #COPY . /src/
 
 #COPY FNPOSInscription.WebApi/Resources/* /src/Resources
 # /src/FNPOSInscription.WebApi/Resources
 
-WORKDIR "/src/FNPOSInscription.WebApi"
-RUN dotnet build "FNPOSInscription.WebApi.csproj" -c Release -o /app/build
+WORKDIR "/src/"
+RUN dotnet build "RecipesApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "FNPOSInscription.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Recipes.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 EXPOSE 587
@@ -28,4 +28,4 @@ EXPOSE 25
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY FNPOSInscription.WebApi/Resources/* /app/Resources/
-ENTRYPOINT ["dotnet", "FNPOSInscription.WebApi.dll"]
+ENTRYPOINT ["dotnet", "Recipes.dll"]
