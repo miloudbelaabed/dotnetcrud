@@ -24,7 +24,7 @@ FROM build AS publish
 RUN dotnet publish "RecipesApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-3EXPOSE 587
+#EXPOSE 587
 #EXPOSE 25
 WORKDIR /app
 COPY --from=publish /app/publish .
