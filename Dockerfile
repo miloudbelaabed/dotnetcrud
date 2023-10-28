@@ -28,4 +28,4 @@ EXPOSE 25
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY RecipesApi/Resources/* /app/Resources/
-ENTRYPOINT ["dotnet", "Recipes.dll"]
+ENTRYPOINT ["dotnet", "RecipesApi.dll"]
