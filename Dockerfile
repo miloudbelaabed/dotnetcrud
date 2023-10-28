@@ -27,5 +27,5 @@ EXPOSE 587
 EXPOSE 25
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY FNPOSInscription.WebApi/Resources/* /app/Resources/
+COPY RecipesApi/Resources/* /app/Resources/
 ENTRYPOINT ["dotnet", "Recipes.dll"]
